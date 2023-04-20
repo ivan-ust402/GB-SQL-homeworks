@@ -119,4 +119,11 @@ WHERE amt > 1000;
 SELECT MIN(amt)
 FROM orders;
 
+# 7. Напишите запрос к таблице “Заказчики”, который может показать всех 
+#    заказчиков, у которых рейтинг больше 100 и они находятся не в Риме.
+
+SELECT *
+FROM customers
+WHERE rating > 100 AND city = "Rome";
+
 
