@@ -106,4 +106,11 @@ SELECT *
 FROM customers
 WHERE cname LIKE "G%";
 
+# 5. Напишите запрос, который может дать вам все заказы со значениями 
+#    суммы выше чем $1,000. (“Заказы”, “amt”  - сумма)
+
+SELECT * 
+FROM orders
+WHERE amt > 1000;
+
 
