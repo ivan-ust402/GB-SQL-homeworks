@@ -91,3 +91,10 @@ SELECT rating, cname
 FROM customers
 WHERE city = "San Jose";
 
+# 3. Напишите запрос, который вывел бы значения snum всех продавцов из таблицы 
+#    заказов без каких бы то ни было повторений. (уникальные значения в  “snum“ 
+#    “Продавцы”)
+
+SELECT DISTINCT sname
+FROM salespeople;
+
