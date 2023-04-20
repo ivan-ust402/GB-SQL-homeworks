@@ -98,3 +98,12 @@ WHERE city = "San Jose";
 SELECT DISTINCT sname
 FROM salespeople;
 
+# 4*. Напишите запрос, который бы выбирал заказчиков, чьи имена начинаются с 
+#     буквы G. Используется оператор "LIKE": (“заказчики”) 
+#     https://dev.mysql.com/doc/refman/8.0/en/string-comparison-functions.html
+
+SELECT * 
+FROM customers
+WHERE cname LIKE "G%";
+
+
