@@ -181,4 +181,16 @@ WITH SRC AS (
         LIMIT 5
 )
 SELECT * FROM SRC
-ORDER BY salary -- Применяем нужную нам сортировку
+ORDER BY salary; -- Применяем нужную нам сортировку
+
+# 3. Выполните группировку всех сотрудников по специальности ,
+#    суммарная зарплата которых превышает 100000
+
+SELECT 
+	GROUP_CONCAT(" ", firstname) as employees_names, 
+    specialty, 
+    SUM(salary) as sum_salary 
+FROM employee
+GROUP by specialty
+HAVING sum_salary > 100000;
+
