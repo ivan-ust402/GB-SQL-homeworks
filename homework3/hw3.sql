@@ -160,4 +160,14 @@ VALUE
 
 SELECT * FROM employee;
 
+# 1. Отсортируйте поле “зарплата” в порядке убывания и возрастания
+
+SELECT * 
+FROM employee
+ORDER BY salary DESC;
+
+SELECT * 
+FROM employee
+ORDER BY salary ASC;
+
 
