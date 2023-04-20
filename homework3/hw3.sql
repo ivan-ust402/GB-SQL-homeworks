@@ -84,3 +84,10 @@ FROM salespeople;
 SELECT city, cname, cnum, rating
 FROM customers;
 
+# 2. Напишите команду SELECT, которая вывела бы оценку(rating),
+#    cопровождаемую именем каждого заказчика в городе San Jose. (“заказчики”)
+
+SELECT rating, cname
+FROM customers
+WHERE city = "San Jose";
+
