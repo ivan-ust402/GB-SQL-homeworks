@@ -147,4 +147,12 @@ FROM AUTO
 WHERE MARK IN ("BMW", "LADA")
 GROUP BY COLOR;
 
-
+# Задание 2. Вывести на экран марку авто(количество) и количество AUTO не этой марки
+SELECT t1.MARK, COUNT(t2.REGNUM) AS OTHER_CAR_COUNT
+FROM (
+	SELECT DISTINCT MARK
+    FROM AUTO
+) AS t1
+LEFT JOIN AUTO AS t2
+ON t1.MARK != t2.MARK
+GROUP BY t1.MARK;
