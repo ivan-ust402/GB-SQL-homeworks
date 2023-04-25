@@ -139,4 +139,12 @@ SELECT * FROM AUTO;
 SELECT * FROM CITY;
 SELECT * FROM MAN;
 
+# Задание 1. Вывести на экран сколько машин каждого цвета 
+# для машин марок BMW и Lada
+
+SELECT COUNT(REGNUM), COLOR
+FROM AUTO
+WHERE MARK IN ("BMW", "LADA")
+GROUP BY COLOR;
+
 
