@@ -67,87 +67,23 @@ INSERT INTO AUTO (REGNUM, MARK,	COLOR, RELEASEDT, PHONENUM )
 VALUES(111119,'LADA', 'СИНИЙ', date'2017-01-01', 9213333331);
 
 
- -- CITY
-INSERT INTO CITY (CITYCODE,CITYNAME,PEOPLES)
-VALUES(1,'Москва', 10000000);
 
 
-INSERT INTO CITY (CITYCODE,CITYNAME,PEOPLES)
-VALUES(2,'Владимир', 500000);
 
 
-INSERT INTO CITY (CITYCODE,CITYNAME,PEOPLES)
-VALUES(3, 'Орел', 300000);
-
-
-INSERT INTO CITY (CITYCODE,CITYNAME,PEOPLES)
-VALUES(4,'Курск', 200000);
-
-
-INSERT INTO CITY (CITYCODE,CITYNAME,PEOPLES)
-VALUES(5, 'Казань', 2000000);
-
-
-INSERT INTO CITY (CITYCODE,CITYNAME,PEOPLES)
-VALUES(7, 'Котлас', 110000);
-
-
-INSERT INTO CITY (CITYCODE,CITYNAME,PEOPLES)
-VALUES(8, 'Мурманск', 400000);
-
-
-INSERT INTO CITY (CITYCODE,CITYNAME,PEOPLES)
-VALUES(9, 'Ярославль', 500000);
-
--- MAN
-INSERT INTO MAN (PHONENUM,FIRSTNAME,LASTNAME,CITYCODE,YEAROLD)
-VALUES('9152222221','Андрей','Николаев', 1, 22);
-
-
-INSERT INTO MAN (PHONENUM,FIRSTNAME,LASTNAME,CITYCODE,YEAROLD)
-VALUES('9152222222','Максим','Москитов', 1, 31);
-
-
-INSERT INTO MAN (PHONENUM,FIRSTNAME,LASTNAME,CITYCODE,YEAROLD)
-VALUES('9153333333','Олег','Денисов', 3, 34);
-
-
-INSERT INTO MAN (PHONENUM,FIRSTNAME,LASTNAME,CITYCODE,YEAROLD)
-VALUES('9173333334','Алиса','Никина', 4, 31);
-
-
-INSERT INTO MAN (PHONENUM,FIRSTNAME,LASTNAME,CITYCODE,YEAROLD)
-VALUES('9173333335','Таня','Иванова', 4, 31);
-
-
-INSERT INTO MAN (PHONENUM,FIRSTNAME,LASTNAME,CITYCODE,YEAROLD)
-VALUES('9213333336','Алексей','Иванов', 7, 25);
-
-
-INSERT INTO MAN (PHONENUM,FIRSTNAME,LASTNAME,CITYCODE,YEAROLD)
-VALUES('9213333331','Андрей','Некрасов', 2, 27);
-
-
-INSERT INTO MAN (PHONENUM,FIRSTNAME,LASTNAME,CITYCODE,YEAROLD)
-VALUES('9213333332','Миша','Рогозин', 2, 21);
-
-
-INSERT INTO MAN (PHONENUM,FIRSTNAME,LASTNAME,CITYCODE,YEAROLD)
-VALUES('9214444444','Алексей','Галкин', 1, 38);
 
 SELECT * FROM AUTO;
-SELECT * FROM CITY;
-SELECT * FROM MAN;
 
 # Задание 1. Вывести на экран сколько машин каждого цвета 
 # для машин марок BMW и Lada
 
-SELECT COUNT(REGNUM), COLOR
+SELECT COLOR, COUNT(REGNUM) AS LADA_BMW_CARS_COUNT
 FROM AUTO
 WHERE MARK IN ("BMW", "LADA")
 GROUP BY COLOR;
 
-# Задание 2. Вывести на экран марку авто(количество) и количество AUTO не этой марки
+# Задание 2. Вывести на экран марку авто(количество) и количество 
+# AUTO не этой марки
 SELECT t1.MARK, COUNT(t2.REGNUM) AS OTHER_CAR_COUNT
 FROM (
 	SELECT DISTINCT MARK
@@ -159,20 +95,7 @@ GROUP BY t1.MARK;
 
 # Задание 3. 
 -- Даны 2 таблицы, созданные следующим образом:
--- create table test_a (id INT, test varchar(10));
--- create table test_b (id INT);
--- insert into test_a(id, test) values
--- (10, 'A'),
--- (20, 'A'),
--- (30, 'F'),
--- (40, 'D'),
--- (50, 'C');
--- insert into test_b(id) values
--- (10),
--- (30),
--- (50);
--- Напишите запрос, который вернет строки из таблицы test_a, 
--- id которых нет в таблице test_b, НЕ используя ключевого слова NOT.
+
 CREATE TABLE IF NOT EXISTS test_a
 (
 id INT,
@@ -201,7 +124,10 @@ VALUES
 SELECT * FROM test_a;
 SELECT * FROM test_b;
 
-SELECT test_a.*
+-- Напишите запрос, который вернет строки из таблицы test_a, 
+-- id которых нет в таблице test_b, НЕ используя ключевого слова NOT.
+
+SELECT test_a.*, test_b.*
 FROM test_a
 LEFT JOIN test_b
 ON test_a.id = test_b.id
