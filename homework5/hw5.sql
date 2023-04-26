@@ -27,9 +27,11 @@ SELECT * FROM auto_price;
 # стоимостью  до 25 000 долларов
 
 CREATE VIEW car AS
+(
 SELECT * 
 FROM auto_price
-WHERE cost < 25000;
+WHERE cost < 25000
+);
 
 SELECT * FROM car;
 
@@ -37,7 +39,14 @@ SELECT * FROM car;
 # Изменить в существующем представлении порог для стоимости: 
 # пусть цена будет до 30 000 долларов (используя оператор ALTER VIEW) 
 
+ALTER VIEW car AS
+(
+SELECT * 
+FROM auto_price
+WHERE cost < 30000
+);
 
+SELECT * FROM car;
 
 # Задание 3
 # Создайте представление, в котором будут только автомобили  
