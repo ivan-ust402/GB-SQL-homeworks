@@ -51,3 +51,16 @@ SELECT * FROM car;
 # Задание 3
 # Создайте представление, в котором будут только автомобили  
 # марки “Шкода” и “Ауди”
+-- CREATE VIEW skoda_audi AS
+-- (
+-- SELECT * FROM auto_price
+-- WHERE Name = "Audi" OR Name = "Skoda"
+-- );
+
+CREATE VIEW skoda_audi AS
+(
+SELECT * FROM auto_price
+WHERE Name IN ("Audi", "Skoda")
+);
+
+SELECT * FROM skoda_audi;
