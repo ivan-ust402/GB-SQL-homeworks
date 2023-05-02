@@ -41,3 +41,22 @@ SELECT date_from_number(123456);
 ### Задание 2
 -- Выведите только четные числа от 1 до 10 включительно.
 -- Пример: 2,4,6,8,10 (можно сделать через шаг + 2: х = 2, х+=2)
+DELIMITER $$
+CREATE PROCEDURE even_numbers()
+BEGIN
+DECLARE num INT DEFAULT 10;
+DECLARE iter INT DEFAULT 1;
+DECLARE result VARCHAR(255) DEFAULT '';
+WHILE iter <= num DO
+	IF (iter % 2) = 0 THEN
+		SET result = concat(result, iter, ' ');
+	END IF;
+	SET iter = iter + 1;
+END WHILE;   
+SELECT result;
+END$$
+DELIMITER ;
+
+-- DROP PROCEDURE even_numbers;
+
+CALL even_numbers();
